@@ -13,7 +13,7 @@ With my patent-pending technology, you can now write block-scope declarations in
 ```js
 let (foo) {
   foo = "foo";
-  console.log("foo");
+  console.log(foo);
 }
 
 foo; // Reference Error!
@@ -27,10 +27,18 @@ foo; // Reference Error!
 try{''()}catch
 (foo) {
   foo = "foo";
-  console.log("foo");
+  console.log(foo);
 }
 
 foo; // Reference Error!
+```
+
+Use it like this:
+
+```js
+eval(
+  BlockScoper.ify("let(foo){foo='foo';console.log(foo);}")
+); // "foo"
 ```
 
 ## Boom!
