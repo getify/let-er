@@ -6,6 +6,8 @@ It's also probably not a huge surprise to many that ES6 is going to give us the 
 
 The solution? This code-transpiler provides you the ability to do block-scoping in JavaScript **right now**.
 
+**UPDATE:** Just found out that `let(x=42){ .. }` style code is dead and *not* coming to ES6 after all. Only non-block-oriented `let x=42`. So... yeah, now "BlockScoper" looks even better because let-blocks are totally better than let-declarations.
+
 ## What does it look like?
 
 With my patent-pending technology, you can now write block-scope declarations in JavaScript with `let`-statement code:
