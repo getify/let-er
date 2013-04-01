@@ -26,7 +26,7 @@ foo; // Reference Error!
 "BlockScoper.js" code transpiler will take any JS you have which uses let statements like the above, and transform it to this ES3-compatible code for block-scoping:
 
 ```js
-try{''()}catch
+try{[]()}catch
 (foo) {
   foo = "foo";
   console.log(foo);
