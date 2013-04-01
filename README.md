@@ -1,4 +1,4 @@
-# BlockScope.js
+# BlockScoper.js
 
 Everyone knows that JavaScript (ES5 and below) only has function-level scope, meaning that `(function(foo){ .. })()` is the smallest amount of boilerplate code required to create a new scope for a `foo` variable.
 
@@ -21,10 +21,10 @@ foo; // Reference Error!
 
 ## How does it work?
 
-"BlockScope.js" code transpiler will take any JS you have which uses let statements like the above, and transform it to this ES3-compatible code for block-scoping:
+"BlockScoper.js" code transpiler will take any JS you have which uses let statements like the above, and transform it to this ES3-compatible code for block-scoping:
 
 ```js
-try{(0)()}catch
+try{""()}catch
 (foo) {
   foo = "foo";
   console.log("foo");
