@@ -27,7 +27,7 @@ foo; // Reference Error!
 
 ```js
 try{throw void 0}catch
-(foo) {
+/*let*/(foo) {
   foo = "foo";
   console.log(foo);
 }
