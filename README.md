@@ -122,4 +122,6 @@ If there are any warnings/notices produced as part of the lexing or `let` proces
 
 ## License
 
-This is all MIT licensed. Enjoy.
+The code and all the documentation are released under the MIT license.
+
+http://getify.mit-license.org/
