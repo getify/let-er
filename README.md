@@ -1,50 +1,57 @@
 # let-er
 
-Everyone knows that JavaScript (ES5 and below) only has function-level scope, meaning that `(function(foo){ .. })()` is the smallest amount of boilerplate code required to create a new scope for a `foo` variable.
+ES6 is bringing the `let x = "foo"` syntax to JavaScript, which basically hijacks any block and scopes your declaration to that block (instead of hoisting to the containing function as in ES5 and below).
 
-It's also probably not a huge surprise to many that ES6 is going to give us the `let` operator, which will let us do things like `let (foo) { .. }` to get block-scoping for `foo`. But, who wants to wait for `let`? ES6 is still like years away from cross-browser usage.
+**Two problems, however:**
 
-The solution? This code-transpiler provides you the ability to do block-scoping in JavaScript **right now**.
+1. ES6 is a long time from being fully ubiquitous.
+2. And even when ES6 arrives, the more preferable `let ( .. ) { .. }` block syntax was rejected and so won't be valid. This is most unfortunate, since that syntax has a more readable form, creating explicit blocks for block-scoping instead of hijacking them.
 
-**UPDATE:** Just found out that `let(x=42){ .. }` style code is dead and *not* coming to ES6 after all. Only non-block-oriented `let x=42`. So... yeah, now *let-er* looks even better because let-blocks are totally better than let-declarations.
+*let-er* solves both these problems. By simply writing `let ( .. ) { .. }` style code, and then running your code through *let-er* as a build-step, your block-scoping will work exactly as you expect, **today**, in all ES3+ browsers and environments!
 
 ## What does it look like?
 
-With my ~~patent-pending technology~~ simple JS parsing, you can now write block-scope declarations in JavaScript with `let`-statement code:
-
 ```js
-let (foo) {
-  foo = "foo";
-  console.log(foo);
+let (x = "foo") {
+  console.log(x); // "foo"
 }
 
-foo; // Reference Error!
+console.log(x); // Reference Error!
 ```
+
+**NOTE:** *let-er* does **not** touch `let ...` declaration syntax (similar to `var ...`), only the (more preferable and more readable) `let ( .. ) { .. }` syntax. If you use `let ...` declarations, *let-er* will simply skip over them.
 
 ## How does it work?
 
-*let-er* code transpiler will take any JS you have which uses let statements like the above, and transform it to this ES3-compatible code for block-scoping:
+*let-er* will transform your `let ( .. ) { .. }` style blocks into this type of ES3-compatible code:
 
 ```js
-try{throw void 0}catch
-/*let*/(foo) {
-  foo = "foo";
-  console.log(foo);
+try{throw "foo"}catch
+/*let*/(x/*="foo"*/) {
+  console.log(x); // "foo"
 }
 
-foo; // Reference Error!
+console.log(x); // Reference Error!
 ```
 
 Use it like this:
 
 ```js
-eval(
-  letEr.compile("let(foo){foo='foo';console.log(foo);}")
-); // "foo"
+letEr.compile("let(x='foo'){console.log(x);}");
 ```
 
-## Boom!
+## Options
+There are two options you can set that control the type of code produced by *let-er*.
 
-Yep. That's it. Impressed? I thought so.
+* `letEr.opts.es6` (boolean; default: `false`) - If set to `true`, will assume ES6 where `let` is available, and create an ES6 `{ let x = "foo"; .. }` block instead of the default `try{throw "foo"}catch(x){ .. }` ES3-compatible snippet.
 
-Oh yeah, this is all MIT licensed. Enjoy.
+* `letEr.opts.annotate` (boolean; default: `true`) - If set to `true`, will output additional code comments (as shown in the above example snippets) to annotate to make the compiled code more readable/trackable to the original code. Otherwise, only the bare minimum code will be output.
+
+   **NOTE:** No extra annotations are needed if `letEr.opts.es6` is set, so this option will not have any effect.
+
+## Warnings
+If there are any warnings/notices produced as part of the lexing or `let` processing, they will be populated in the `letEr.warnings` array.
+
+## License
+
+This is all MIT licensed. Enjoy.
