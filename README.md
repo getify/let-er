@@ -25,7 +25,151 @@ console.log(x); // Reference Error!
 
 **NOTE:** *let-er* does **not** touch `let ..;` declaration syntax (similar to `var ..;`), only the (more preferable and more readable) `let ( .. ) { .. }` statement syntax. If you use `let ..;` declarations, *let-er* will simply skip over them.
 
-## How does it work?
+## Why block-scoping anyway?
+You may be wondering what's the big deal with block-scoping? What difference does it make?
+
+Let's actually break the question down into two parts:
+
+1. How does block-scoping affect my [coding style/maintainability/behavior](#coding-stylemaintainabilitybehavior)?
+2. How does block-scoping affect my [code performance](#code-performance) (memory, GC, etc)?
+
+### coding style/maintainability/behavior
+There's a concept in computer science called the "Principle of Least Exposure", which is broadly applicable in a lot of areas, but in particular here, we are using that to mean: "expose a variable and its value for only as long as it's needed, no more, no less."
+
+Take this code snippet:
+
+```js
+function foo() {
+	var i, ret = [];
+
+	// 100+ LoC doing other stuff with `ret` only
+
+	for (i=0; i<ret.length; i++) {
+		// ... other stuff with `i` and `ret`
+	}
+}
+```
+
+The fundamental question is, is it a good thing to have defined `i` as a "global" (to the scope of function `foo()` of course) variable, or would it have been better to keep it around (aka, "expose it") only for the loop that uses `i`?
+
+What if we had done:
+
+```js
+function foo() {
+	var ret = [];
+
+	// 100+ LoC doing other stuff with `ret` only
+
+	for (var i=0; i<ret.length; i++) {
+		// ... other stuff with `i` and `ret`
+	}
+}
+```
+
+That keeps `i` only referenced in the place he's used. That's an improvement.
+
+And yet, because of declaration hoisting, that snippet will behave exactly the same as the previous snippet. The engine sees no difference.
+
+Another example:
+
+```js
+function foo() {
+	var ret = [];
+
+	// 100+ LoC doing other stuff with `ret` only
+
+	if (ret.length > 10) {
+		var i = ret.length;
+		// do other stuff with `i` now, but only inside this `if`
+	}
+}
+```
+
+See how we've made it clear from a coding style perspective that `i` is only for that part of the function?
+
+By contrast, `ret` is a variable we use throughout the function `foo()`, so it's perfectly fine and suitable to function-scope it.
+
+Unfortunately, we've created a little bit of cognitive dissonance here between the code style of where `i` is declared, and what the actual scoping of `i` is, because `i` will be hoisted to the whole function regardless of our code style.
+
+That means if you accidentally try to reference a variable `i` elsewhere in the code, maybe as a typo, you'd wish that you got some sort of helpful error like a "ReferenceError" that points out your mistake, but you won't get that, because `i` in fact exists everywhere inside of `foo()` even if it has no meaningful value yet.
+
+Herein we see a code maintainability (aka "style") benefit of the new ES6 `let` keyword for block-scoping. By doing this:
+
+```js
+function foo() {
+	var ret = [];
+
+	// 100+ LoC doing other stuff with `ret` only
+
+	if (ret.length > 10) {
+		let i = ret.length;		// <===== Notice the `let` !!?!?!!?!
+		// do other stuff with `i` now, but only inside this `if`
+	}
+}
+```
+
+Now, the behavior of `i` will be to be block-scoped to that part of the code, and it will be clear not only stylistically but also functionally that `i` doesn't exist anywhere but in that block. You'll get helpful "ReferenceError" errors if you try to reference `i` elsewhere. Yay.
+
+### code performance
+Now, let's examine how `let` ***may*** affect your code's performance. I say "may" for a couple of reasons. First, the number of engine implementations of `let` is pretty limited, so we can't *really* test in the real world just how much it will or won't affect performance. We can make intelligent guesses about the possibilities.
+
+Secondly, what the engine can do in theory and what it *will* do in the real-world are often very different. These are implementation details and we should be careful not to get too much "into the weeds" here. Only those who actually make the engines are qualified to *really* obsess too much here.
+
+But let's reason a little bit.
+
+Consider:
+
+```js
+function foo() {
+	// 1000+ LoC of a bunch of complex stuff
+}
+
+function bar() {
+	// a small simple function
+	// note: does not use `foo()` at all
+}
+
+setTimeout(bar,60000); // make bar's closure stay around awhile
+
+for (var i=0; i<10; i++) {
+	foo(); // only places `foo()` is used
+}
+```
+
+The `bar()` function has a closure over everything we see here in this scope, including the `foo()` function it doesn't use at all. Turns out `foo()` is a big hairy complex function so its memory footprint is not "zero".
+
+For the 60 seconds that `bar()` is kept alive, his closure over this whole scope is also kept alive, meaning `foo()` is kept alive. But does `foo()` really need to be kept alive? Depends.
+
+If we (and by "we", I mean the engine, of course!) know for sure that `bar()` never needs `foo()`, we might be able to make an intelligent implementation optimization that culls `foo()` out of the closure that `bar()` keeps around. We might, we might not. If `bar()` has anything inside him that we can't lexically analyze, like a `with` or `eval`, all bets are off the table. Who knows if `bar()` needs `foo()` or not. Better safe than sorry. Also, who knows if the engine actually does smart closures or not?
+
+In theory they might. But in practice, the safer bet is to assume they don't or can't, and code a little defensively.
+
+Here's where `let` block-scoping can help. It acts as a very clear signal to the engine what we intend for the lifetime of `foo()`. Therefore, the engine doesn't have to guess nearly as much. It can tell for sure. Consider:
+
+```js
+function bar() {
+	// a small simple function
+	// note: does not use `foo()` at all
+}
+
+setTimeout(bar,60000); // make bar's closure stay around awhile
+
+{
+	let foo = function foo() {
+		// 1000+ LoC of a bunch of complex stuff
+	};
+
+	for (var i=0; i<10; i++) {
+		foo(); // only places `foo()` is used
+	}
+}
+```
+
+Simple change, but *potentially* a big performance difference. Now, it's clear that `foo()` only exists inside that block. `bar()` wouldn't have access to it anyway, even if it tried, so `foo()` definitely doesn't need to be kept around while `bar()` is waiting to execute. The engine has a much clearer signal that it's OK to free up `foo()` from the closure, to garbage collect it.
+
+Will the engines do this? I dunno. You dunno, probably. But they *can*. And they *might*. And they *might* be able to more efficiently than if you hadn't used block-scoping.
+
+## How does *let-er* work?
 *let-er* will, by default, transform your `let ( .. ) { .. }` style blocks into this type of ES3-compatible code:
 
 ```js
