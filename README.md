@@ -14,6 +14,8 @@ If you're already targeting an ES6-only environment (like node.js for instance),
 
 ## What does it look like?
 
+Write block-scoped code like this:
+
 ```js
 let (x = "foo") {
   console.log(x); // "foo"
@@ -22,11 +24,11 @@ let (x = "foo") {
 console.log(x); // Reference Error!
 ```
 
-**NOTE:** *let-er* does **not** touch `let ...` declaration syntax (similar to `var ...`), only the (more preferable and more readable) `let ( .. ) { .. }` statement syntax. If you use `let ...` declarations, *let-er* will simply skip over them.
+**NOTE:** *let-er* does **not** touch `let ..;` declaration syntax (similar to `var ..;`), only the (more preferable and more readable) `let ( .. ) { .. }` statement syntax. If you use `let ..;` declarations, *let-er* will simply skip over them.
 
 ## How does it work?
 
-*let-er* will transform your `let ( .. ) { .. }` style blocks into this type of ES3-compatible code:
+*let-er* will, by default, transform your `let ( .. ) { .. }` style blocks into this type of ES3-compatible code:
 
 ```js
 try{throw "foo"}catch
@@ -37,7 +39,9 @@ try{throw "foo"}catch
 console.log(x); // Reference Error!
 ```
 
-**NOTE:** By default, shown here are the extra comment annotations to make the transpiled code a bit more readable. You can suppress these default comment annotations with the `annotate` [option setting](#options), in which case the code produced would be:
+A bit hacky? Sure. But it works. And you get to write nice, maintable code with the benefits of block-scoping. Who cares what the transpiled code looks like, right? :)
+
+**NOTE:** By default, shown here are the extra comment annotations to make the transpiled code a bit more readable. You can suppress these default comment annotations with the `annotate` [option setting](#options), in which case the ES3+ code produced would be:
 
 ```js
 try{throw "foo"}catch(x){
@@ -68,7 +72,7 @@ let (x = "foo", y = "bar") {
 console.log(x, y); // Reference Error!
 ```
 
-The transpiled code will look like this:
+The ES3+ transpiled code will look like this:
 
 ```js
 try{throw "foo"}catch
@@ -81,7 +85,7 @@ try{throw "bar"}catch
 console.log(x, y); // Reference Error!
 ```
 
-Or, without annotations:
+Or, ES3+ without annotations:
 
 ```js
 try{throw "foo"}catch(x){try{throw "bar"}catch(y){
@@ -91,7 +95,7 @@ try{throw "foo"}catch(x){try{throw "bar"}catch(y){
 console.log(x, y); // Reference Error!
 ```
 
-And in ES6-only mode:
+And in ES6-only targeting mode:
 
 ```js
 { let x = "foo", y = "bar";
