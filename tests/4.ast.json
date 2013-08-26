@@ -1,0 +1,401 @@
+{
+    "tokens": [
+        {
+            "type": 1,
+            "val": "/* test #4\n * testing how let-er works\n */",
+            "literal": 1
+        },
+        {
+            "type": 0,
+            "val": "\n\n"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "b"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "=",
+                    "assignment": true
+                },
+                {
+                    "type": 5,
+                    "val": "\n\t"
+                },
+                {
+                    "type": 1,
+                    "val": "/*myfunc*/",
+                    "literal": 1
+                },
+                {
+                    "type": 5,
+                    "val": "function(g){\n\t\t"
+                },
+                {
+                    "type": 6,
+                    "tokens": [
+                        {
+                            "type": 2,
+                            "val": "let"
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 3,
+                            "val": "("
+                        },
+                        {
+                            "type": 4,
+                            "val": "c"
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 3,
+                            "val": "=",
+                            "assignment": true
+                        },
+                        {
+                            "type": 5,
+                            "val": " g"
+                        },
+                        {
+                            "type": 3,
+                            "val": ","
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 4,
+                            "val": "d"
+                        },
+                        {
+                            "type": 3,
+                            "val": ")",
+                            "let_decl_list_complete": true
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 3,
+                            "val": "{",
+                            "let_header_complete": true
+                        }
+                    ]
+                },
+                {
+                    "type": 0,
+                    "val": "\n\t\t\td = c * "
+                },
+                {
+                    "type": 1,
+                    "val": "2",
+                    "literal": 5
+                },
+                {
+                    "type": 0,
+                    "val": ";\n\t\t\t"
+                },
+                {
+                    "type": 6,
+                    "tokens": [
+                        {
+                            "type": 2,
+                            "val": "let"
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 3,
+                            "val": "("
+                        },
+                        {
+                            "type": 4,
+                            "val": "f"
+                        },
+                        {
+                            "type": 1,
+                            "val": "/* just a random*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 3,
+                            "val": ")",
+                            "let_decl_list_complete": true
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 3,
+                            "val": "{",
+                            "let_header_complete": true
+                        }
+                    ]
+                },
+                {
+                    "type": 0,
+                    "val": "\n\t\t\t\tf = d + c;\n\t\t\t\tconsole.log(f);\n\t\t\t"
+                },
+                {
+                    "type": 3,
+                    "val": "}",
+                    "let_block_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": "\n\t\t"
+                },
+                {
+                    "type": 3,
+                    "val": "}",
+                    "let_block_complete": true
+                },
+                {
+                    "type": 5,
+                    "val": "\n\t}"
+                },
+                {
+                    "type": 3,
+                    "val": ","
+                },
+                {
+                    "type": 0,
+                    "val": "\n\t"
+                },
+                {
+                    "type": 4,
+                    "val": "e"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "=",
+                    "assignment": true
+                },
+                {
+                    "type": 5,
+                    "val": " "
+                },
+                {
+                    "type": 1,
+                    "val": "3.14",
+                    "literal": 5
+                },
+                {
+                    "type": 5,
+                    "val": "\n"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\te++; "
+        },
+        {
+            "type": 1,
+            "val": "// sure, why not increment Pi?",
+            "literal": 1
+        },
+        {
+            "type": 0,
+            "val": "\n\t"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "h"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "=",
+                    "assignment": true
+                },
+                {
+                    "type": 5,
+                    "val": " b(e * "
+                },
+                {
+                    "type": 1,
+                    "val": "3",
+                    "literal": 5
+                },
+                {
+                    "type": 5,
+                    "val": ")"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\t\t"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "j"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "=",
+                    "assignment": true
+                },
+                {
+                    "type": 5,
+                    "val": " h - "
+                },
+                {
+                    "type": 1,
+                    "val": "1",
+                    "literal": 5
+                },
+                {
+                    "type": 5,
+                    "val": ""
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\t\t\th *= j;\n\t\t"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n\t\tconsole.log(h);\n\t"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n"
+        }
+    ]
+}

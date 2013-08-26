@@ -1,0 +1,31 @@
+{
+	"name": "literalizer",
+	"version": "0.2.0-a",
+	"description": "Transpile let-block block-scoping into ES3 or ES6",
+	"main": "lib/let-er.js",
+	"scripts": {
+		"test": "node tests/run.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/getify/let-er.git"
+	},
+	"keywords": [
+		"es6",
+		"scoping",
+		"let",
+		"parse",
+		"transpile"
+	],
+	"bugs": {
+		"url": "https://github.com/getify/let-er/issues",
+		"email": "getify@gmail.com"
+	},
+	"dependencies": {
+		"diff": ">= 1.0.5"
+	},
+	"homepage": "http://github.com/getify/let-er",
+	"author": "Kyle Simpson <getify@gmail.com>",
+	"license": "MIT"
+}
+
