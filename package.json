@@ -1,6 +1,6 @@
 {
 	"name": "let-er",
-	"version": "0.2.0-a",
+	"version": "0.2.1-a",
 	"description": "Transpile let-block block-scoping into ES3 or ES6",
 	"main": "lib/let-er.js",
 	"scripts": {
@@ -22,6 +22,9 @@
 		"email": "getify@gmail.com"
 	},
 	"dependencies": {
+		"literalizer": "latest"
+	},
+	"devDependencies": {
 		"diff": ">= 1.0.5"
 	},
 	"homepage": "http://github.com/getify/let-er",
