@@ -140,7 +140,7 @@ The `bar()` function has a closure over everything we see here in this scope, in
 
 For the 60 seconds that `bar()` is kept alive, his closure over this whole scope is also kept alive, meaning `foo()` is kept alive. But does `foo()` really need to be kept alive? Depends.
 
-If we (and by "we", I mean the engine, of course!) know for sure that `bar()` never needs `foo()`, we might be able to make an intelligent implementation optimization that culls `foo()` out of the closure that `bar()` keeps around. We might, we might not. If `bar()` has anything inside him that we can't lexically analyze, like a `with` or `eval`, all bets are off the table. Who knows if `bar()` needs `foo()` or not. Better safe than sorry. Also, who knows if the engine actually does smart closures or not?
+If we (and by "we", I mean the engine, of course!) know for sure that `bar()` never needs `foo()`, we might be able to make an intelligent implementation optimization that culls `foo()` out of the closure that `bar()` keeps around. We might, we might not. If `bar()` has anything inside him that we can't lexically analyze, like a `with` or `eval`, all bets are off the table. Who knows if `bar()` needs `foo()` or not? Better safe than sorry. Also, who knows if the engine actually does smart closures or not?
 
 In theory they might. But in practice, the safer bet is to assume they don't or can't, and code a little defensively.
 
@@ -270,17 +270,32 @@ You may be wondering if there's some crazy performance hit to the ES3 `try / cat
 
 4. If you still doubt the veracity of using the `try / catch` hack for ES3 block-scoping, note that [Google Traceur ES6 Transpiler](https://github.com/google/traceur-compiler) uses the same hack.
 
-   Here's a [demo to try it out](http://traceur-compiler.googlecode.com/git/demo/repl.html#if%20%28true%29%20{%0A%20%20let%20x%20%3D%202%3B%0A%20%20console.log%28x%29%3B%20%2F%2F%202%0A}). **Note:** you will need to turn on "Options" -> "Show all options" -> "blockBinding" for it to work.
+   Here's a [demo to try it out](http://traceur-compiler.googlecode.com/git/demo/repl.html#if%20%28true%29%20{%0A%20%20let%20x%20%3D%202%3B%0A%20%20console.log%28x%29%3B%20%2F%2F%202%0A}). **NOTE:** you will need to turn on "Options" -> "Show all options" -> "blockBinding" for it to work.
 
 ## Usage
-Use *let-er* like this:
+The `compile(..)` API method takes code and detects if there are any matching `let ( .. ) { .. }` style blocks that it needs to transpile. You get a single code string back, ready to go.
 
 ```js
 letEr.compile('let(x="foo"){console.log(x);}');
 ```
 
+### Additional API methods
+The API also includes `lex(..)`, `parse(..)`, and `generate(..)`:
+
+* `lex(..)` takes code and returns an array of tokens from the lexing of the code.
+* `parse(..)` takes the array of tokens and parses it for let-blocks, and returns an AST (tree: an array of nodes and nested nodes).
+* `generate(..)` takes the AST formatted as it comes from `parse(..)` and produces the code string, the same as it comes from the `compile(..)` API method.
+
+If you inspect the token stream or the AST, each element has a `type` attribute with a numeric value. The *let-er* API provides constants for these values to make it easier to interpret the element types.
+
+For example, `letEr.TOKEN.LET_HEADER` is the value that identifies the token list (nested tokens) that represents the let-block's declaration header. `letEr.NODE.LET_BLOCK` by contrast is the value for a node in the AST that represents a full let-block, including the nested declarations and the content inside the `{ .. }` block.
+
+*let-er* uses [literalizer](https://github.com/getify/literalizer), which means that the token stream and the AST will have each of *literalizer*'s identified literals as separate elements. Those elements all have a `literal` property with a value that corresponds to the [constants on the literalizer API](https://github.com/getify/literalizer#complex-literals), such as `LIT.SEGMENT.STRING_LITERAL` for, obviously, string literal elements.
+
+Most people will not need to use these additional *let-er* API methods, but if you do need to perform extra analysis or transforms, the API provides you that flexibility. **NOTE:** Be careful to not modify/invalidate the format of these element structures, or *let-er* will likely not be able to consume them again for the next step.
+
 ## Options
-There are two options you can set that control the type of code produced by *let-er*.
+There are two options you can set that control the type of code produced by *let-er* (aka, the `generate(..)` step).
 
 * `letEr.opts.es6` (boolean; default: `false`) - If set to `true`, will assume ES6 where `let` is available, and create an ES6 `{ let x = "foo"; .. }` block instead of the default `try{throw "foo"}catch(x){ .. }` ES3-compatible snippet.
 
