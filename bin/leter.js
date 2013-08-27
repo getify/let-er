@@ -1,0 +1,162 @@
+#!/usr/bin/env node
+
+/*! let-er CLI
+    (c) Kyle Simpson
+    MIT License: http://getify.mit-license.org
+*/
+
+"use strict";
+
+function printHelp() {
+	console.log("let-er");
+	console.log("(c) Kyle Simpson | http://getify.mit-license.org/");
+	console.log("");
+	console.log("usage: leter opt [, ..opt]");
+	console.log("");
+	console.log("options:");
+	console.log("--help                 show this help");
+	console.log("");
+	console.log("--ignore-warnings      ignore and suppress any warnings");
+	console.log("--no-annotate          do not annotate ES3 output");
+	console.log("--es6                  target ES6 for output (use native let keyword)");
+	console.log("");
+	console.log("--compile              compile the JS stream from 'stdin'");
+	console.log("--compile=file         compile a JS file");
+	console.log("");
+}
+
+function main() {
+	var output = "", compiles = {};
+
+	letEr.opts.annotate = !OPT_NO_ANNOTATE;
+	letEr.opts.es6 = OPT_ES6;
+
+	// process stdin, if any
+	if (data) {
+		// compiling more than one source?
+		if (OPT_COMPILE.length > 0) {
+			output += "/*** input ***/\n";
+		}
+
+		try {
+			output += letEr.compile(data);
+		}
+		catch (err) {
+			console.error("Compiling failed [stdin]; " + err.toString() + (err.stack ? "\n" + err.stack : ""));
+			process.exit(1);
+		}
+	}
+
+	// process --compile arguments, if any
+	if (OPT_COMPILE.length > 0) {
+		OPT_COMPILE.forEach(function(file){
+			if (fs.existsSync(file)) {
+				compiles[file] = fs.readFileSync(file,"utf8");
+			}
+			else {
+				console.error("File not found: " + file);
+				process.exit(1);
+			}
+		});
+
+		Object.keys(compiles).forEach(function(file,idx){
+			// compiling more than one source?
+			if (data || OPT_COMPILE.length > 1) {
+				output += ((data || idx > 0) ? "\n" : "") + "/*** " + path.basename(file) + " ***/\n";
+			}
+
+			try {
+				output += letEr.compile(compiles[file]);
+			}
+			catch (err) {
+				console.error("Compiling failed [" + file + "]; " + err.toString() + (err.stack ? "\n" + err.stack : ""));
+				process.exit(1);
+			}
+		});
+	}
+
+	console.log(output);
+
+	if (letEr.warnings.length > 0 && !OPT_IGNORE_WARNINGS) {
+		console.log("--Warnings--");
+		letEr.warnings.forEach(function(warning){
+			console.warn(warning);
+		});
+	}
+}
+
+function usageError(msg) {
+	console.log(msg);
+	console.log("");
+	printHelp();
+	process.exit(1);
+}
+
+
+var path = require("path"),
+	fs = require("fs"),
+
+	DIR_ROOT = path.join(__dirname,".."),
+
+	letEr = require(path.join(DIR_ROOT,"lib","let-er.js")),
+
+	OPT_IGNORE_WARNINGS = false,
+	OPT_NO_ANNOTATE = false,
+	OPT_ES6 = false,
+	OPT_COMPILE_STDIN = false,
+	OPT_COMPILE = [],
+
+	data = ""
+;
+
+process.argv.slice(2).forEach(function(arg){
+	var tmp;
+	switch (arg) {
+		case "--help":
+			printHelp();
+			process.exit(1);
+			break;
+		case "--ignore-warnings":
+			OPT_IGNORE_WARNINGS = true;
+			break;
+		case "--no-annotate":
+			OPT_NO_ANNOTATE = true;
+			break;
+		case "--es6":
+			OPT_ES6 = true;
+			break;
+		case "--compile":
+			OPT_COMPILE_STDIN = true;
+			break;
+		default:
+			if ((tmp = arg.match(/^--compile=(.+)$/))) {
+				OPT_COMPILE.push(tmp[1]);
+			}
+			else {
+				usageError("Unrecognized flag: " + arg);
+			}
+			break;
+	}
+});
+
+// must compile at least one source
+if (!(OPT_COMPILE_STDIN || OPT_COMPILE.length > 0)) {
+	usageError("either `--compile` or `--compile=file` required.");
+}
+
+if (OPT_COMPILE_STDIN) {
+	process.stdin.setEncoding("utf8");
+	process.stdin.on("data",function(chunk){
+		if (chunk) data += chunk;
+	});
+	process.stdin.on("end",function(){
+		if (!data) {
+			usageError("nothing found on 'stdin'.");
+		}
+		main();
+	});
+	process.stdin.resume();
+}
+else {
+	main();
+}

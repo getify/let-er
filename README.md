@@ -272,7 +272,7 @@ You may be wondering if there's some crazy performance hit to the ES3 `try / cat
 
    Here's a [demo to try it out](http://traceur-compiler.googlecode.com/git/demo/repl.html#if%20%28true%29%20{%0A%20%20let%20x%20%3D%202%3B%0A%20%20console.log%28x%29%3B%20%2F%2F%202%0A}). **NOTE:** you will need to turn on "Options" -> "Show all options" -> "blockBinding" for it to work.
 
-## Usage
+## API
 The `compile(..)` API method takes code and detects if there are any matching `let ( .. ) { .. }` style blocks that it needs to transpile. You get a single code string back, ready to go.
 
 ```js
@@ -293,6 +293,35 @@ For example, `letEr.TOKEN.LET_HEADER` is the value that identifies the token lis
 *let-er* uses [literalizer](https://github.com/getify/literalizer), which means that the token stream and the AST will have each of *literalizer*'s identified literals as separate elements. Those elements all have a `literal` property with a value that corresponds to the [constants on the literalizer API](https://github.com/getify/literalizer#complex-literals), such as `LIT.SEGMENT.STRING_LITERAL` for, obviously, string literal elements.
 
 Most people will not need to use these additional *let-er* API methods, but if you do need to perform extra analysis or transforms, the API provides you that flexibility. **NOTE:** Be careful to not modify/invalidate the format of these element structures, or *let-er* will likely not be able to consume them again for the next step.
+
+## CLI
+
+*let-er* comes with a node.js tool called `leter`, in the "bin/" directory, which is a CLI tool for compiling your let-block JS code.
+
+Here are the options for the CLI tool:
+
+```
+usage: leter opt [, ..opt]
+
+options:
+--help                 show this help
+
+--ignore-warnings      ignore and suppress any warnings
+--no-annotate          do not annotate ES3 output
+--es6                  target ES6 for output (use native let keyword)
+
+--compile              compile the JS stream from 'stdin'
+--compile=file         compile a JS file
+```
+
+If the `--compile` flag is passed, it will read code in from *stdin*.
+
+The `--compile=file` flag can (also) be passed multiple times, once for each file you want to compile.
+
+```
+bin/leter --compile=some/file1.js --compile=some/file2.js
+echo ".. some code .." | bin/let --compile --compile=some/file3.js
+```
 
 ## Options
 There are two options you can set that control the type of code produced by *let-er* (aka, the `generate(..)` step).
