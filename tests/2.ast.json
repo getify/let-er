@@ -1,5 +1,5 @@
 {
-    "tokens": [
+    "AST": [
         {
             "type": 1,
             "val": "/* test #2\n * testing how let-er works\n */",
@@ -10,171 +10,126 @@
             "val": "\n\n"
         },
         {
-            "type": 6,
-            "tokens": [
+            "type": 2,
+            "declarations": [
                 {
-                    "type": 2,
-                    "val": "let"
+                    "identifiers": [
+                        {
+                            "type": 1,
+                            "val": "/*foo*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 4,
+                            "val": "a"
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*bar*/",
+                            "literal": 1
+                        }
+                    ],
+                    "assignments": [
+                        {
+                            "type": 1,
+                            "val": "/*baz*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 1,
+                            "val": "2",
+                            "literal": 5
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*blah*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 5,
+                            "val": " "
+                        }
+                    ]
                 },
+                {
+                    "identifiers": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 1,
+                            "val": "// fun",
+                            "literal": 1
+                        },
+                        {
+                            "type": 0,
+                            "val": "\n\t"
+                        },
+                        {
+                            "type": 4,
+                            "val": "b"
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*me*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "assignments": [
+                        {
+                            "type": 5,
+                            "val": "\n\t\t"
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*and\n\t\t\tthen\n\t\t\t\tsome*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 5,
+                            "val": " "
+                        },
+                        {
+                            "type": 1,
+                            "val": "42",
+                            "literal": 5
+                        },
+                        {
+                            "type": 5,
+                            "val": " "
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*more*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 5,
+                            "val": "  "
+                        }
+                    ]
+                }
+            ],
+            "children": [
                 {
                     "type": 0,
                     "val": " "
                 },
                 {
                     "type": 1,
-                    "val": "/*dropped*/",
-                    "literal": 1
-                },
-                {
-                    "type": 3,
-                    "val": "("
-                },
-                {
-                    "type": 1,
-                    "val": "/*foo*/",
-                    "literal": 1
-                },
-                {
-                    "type": 4,
-                    "val": "a"
-                },
-                {
-                    "type": 1,
-                    "val": "/*bar*/",
-                    "literal": 1
-                },
-                {
-                    "type": 3,
-                    "val": "=",
-                    "assignment": true
-                },
-                {
-                    "type": 1,
-                    "val": "/*baz*/",
-                    "literal": 1
-                },
-                {
-                    "type": 1,
-                    "val": "2",
-                    "literal": 5
-                },
-                {
-                    "type": 1,
-                    "val": "/*blah*/",
-                    "literal": 1
-                },
-                {
-                    "type": 5,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": ","
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 1,
-                    "val": "// fun",
+                    "val": "// yay",
                     "literal": 1
                 },
                 {
                     "type": 0,
-                    "val": "\n\t"
-                },
-                {
-                    "type": 4,
-                    "val": "b"
-                },
-                {
-                    "type": 1,
-                    "val": "/*me*/",
-                    "literal": 1
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "=",
-                    "assignment": true
-                },
-                {
-                    "type": 5,
-                    "val": "\n\t\t"
-                },
-                {
-                    "type": 1,
-                    "val": "/*and\n\t\t\tthen\n\t\t\t\tsome*/",
-                    "literal": 1
-                },
-                {
-                    "type": 5,
-                    "val": " "
-                },
-                {
-                    "type": 1,
-                    "val": "42",
-                    "literal": 5
-                },
-                {
-                    "type": 5,
-                    "val": " "
-                },
-                {
-                    "type": 1,
-                    "val": "/*more*/",
-                    "literal": 1
-                },
-                {
-                    "type": 5,
-                    "val": "  "
-                },
-                {
-                    "type": 3,
-                    "val": ")",
-                    "let_decl_list_complete": true
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 1,
-                    "val": "/*dropped*/",
-                    "literal": 1
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "{",
-                    "let_header_complete": true
+                    "val": "\n\tb *= a++;\n"
                 }
             ]
-        },
-        {
-            "type": 0,
-            "val": " "
-        },
-        {
-            "type": 1,
-            "val": "// yay",
-            "literal": 1
-        },
-        {
-            "type": 0,
-            "val": "\n\tb *= a++;\n"
-        },
-        {
-            "type": 3,
-            "val": "}",
-            "let_block_complete": true
         },
         {
             "type": 0,

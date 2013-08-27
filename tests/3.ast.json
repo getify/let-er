@@ -1,5 +1,5 @@
 {
-    "tokens": [
+    "AST": [
         {
             "type": 1,
             "val": "/* test #3\n * testing how let-er works\n */",
@@ -10,130 +10,96 @@
             "val": "\n\n"
         },
         {
-            "type": 6,
-            "tokens": [
+            "type": 2,
+            "declarations": [
                 {
-                    "type": 2,
-                    "val": "let"
+                    "identifiers": [
+                        {
+                            "type": 4,
+                            "val": "b"
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "assignments": [
+                        {
+                            "type": 5,
+                            "val": " (a["
+                        },
+                        {
+                            "type": 1,
+                            "val": "'foo'",
+                            "literal": 2
+                        },
+                        {
+                            "type": 5,
+                            "val": "] * "
+                        },
+                        {
+                            "type": 1,
+                            "val": "2",
+                            "literal": 5
+                        },
+                        {
+                            "type": 5,
+                            "val": ", a == "
+                        },
+                        {
+                            "type": 1,
+                            "val": "8",
+                            "literal": 5
+                        },
+                        {
+                            "type": 5,
+                            "val": ")"
+                        }
+                    ]
                 },
+                {
+                    "identifiers": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 4,
+                            "val": "c"
+                        }
+                    ],
+                    "assignments": null
+                },
+                {
+                    "identifiers": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 4,
+                            "val": "d"
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "assignments": [
+                        {
+                            "type": 1,
+                            "val": "/3*/ig",
+                            "literal": 4
+                        }
+                    ]
+                }
+            ],
+            "children": [
                 {
                     "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "("
-                },
-                {
-                    "type": 4,
-                    "val": "b"
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "=",
-                    "assignment": true
-                },
-                {
-                    "type": 5,
-                    "val": " (a["
-                },
-                {
-                    "type": 1,
-                    "val": "'foo'",
-                    "literal": 2
-                },
-                {
-                    "type": 5,
-                    "val": "] * "
-                },
-                {
-                    "type": 1,
-                    "val": "2",
-                    "literal": 5
-                },
-                {
-                    "type": 5,
-                    "val": ", a == "
-                },
-                {
-                    "type": 1,
-                    "val": "8",
-                    "literal": 5
-                },
-                {
-                    "type": 5,
-                    "val": ")"
-                },
-                {
-                    "type": 3,
-                    "val": ","
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 4,
-                    "val": "c"
-                },
-                {
-                    "type": 3,
-                    "val": ","
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 4,
-                    "val": "d"
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "=",
-                    "assignment": true
-                },
-                {
-                    "type": 1,
-                    "val": "/3*/ig",
-                    "literal": 4
-                },
-                {
-                    "type": 5,
-                    "val": ""
-                },
-                {
-                    "type": 3,
-                    "val": ")",
-                    "let_decl_list_complete": true
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "{",
-                    "let_header_complete": true
+                    "val": "\n\tconsole.log(b);\n"
                 }
             ]
-        },
-        {
-            "type": 0,
-            "val": "\n\tconsole.log(b);\n"
-        },
-        {
-            "type": 3,
-            "val": "}",
-            "let_block_complete": true
         },
         {
             "type": 0,

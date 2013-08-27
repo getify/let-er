@@ -1,0 +1,357 @@
+{
+    "tokens": [
+        {
+            "type": 1,
+            "val": "/* test #6\n * testing how let-er works\n */",
+            "literal": 1
+        },
+        {
+            "type": 0,
+            "val": "\n\nlet a;\n\nfunction foo() {\n\tlet;\n\tlet (b)\n}\n\n"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "c"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\tlet d;\n\td++;\n\tlet let "
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "f"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": " g++; "
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n\nfunction bar() {\n\t"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "h"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\t\tlet (i) let(j) "
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "k"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": " l++; "
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n\t"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n}\n\n"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "m"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\tlet m;\n\tm++;\n\t"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "n"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\t\tlet n;\n\t\tn++;\n\t\t"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "o"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\t\t\tlet o;\n\t\t\to++;\n\t\t\tlet let (p)\n\t\t"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n\t"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n"
+        }
+    ],
+    "warnings": [
+        "Skipping: let (e) foo(",
+        "Skipping: let (g=)",
+        "Unterminated let-block at end of code",
+        "Skipping: let (b)",
+        "Skipping: let ",
+        "Skipping: let ",
+        "Skipping: let (i) ",
+        "Skipping: let(j) ",
+        "Skipping: let ",
+        "Skipping: let (p)\t\t"
+    ]
+}

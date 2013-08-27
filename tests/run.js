@@ -155,7 +155,7 @@ test_sources.forEach(function(source,idx){
 		res_AST += "}";
 		res_AST = JSON.stringify(JSON.parse(res_AST),null,"    ");
 
-		checks[ast_filename] = res_tokens.trim();
+		checks[ast_filename] = res_AST.trim();
 	}
 
 	if (!error) {

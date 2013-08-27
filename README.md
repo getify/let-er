@@ -333,7 +333,7 @@ There are two options you can set that control the type of code produced by *let
    **NOTE:** No extra annotations are needed if `letEr.opts.es6` is set, so this option will not have any effect.
 
 ## Warnings
-If there are any warnings/notices produced as part of the lexing or `let` processing, they will be populated in the `letEr.warnings` array.
+If there are any warnings/notices produced as part of the lexing or `let` processing, they will be populated in the `letEr.warnings` array. You can call `letEr.reset()` to clear out the warnings list in between separate compilations.
 
 ## License
 The code and all the documentation are released under the MIT license.

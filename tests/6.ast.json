@@ -1,0 +1,181 @@
+{
+    "AST": [
+        {
+            "type": 1,
+            "val": "/* test #6\n * testing how let-er works\n */",
+            "literal": 1
+        },
+        {
+            "type": 0,
+            "val": "\n\nlet a;\n\nfunction foo() {\n\tlet;\n\tlet (b)\n}\n\n"
+        },
+        {
+            "type": 2,
+            "declarations": [
+                {
+                    "identifiers": [
+                        {
+                            "type": 4,
+                            "val": "c"
+                        }
+                    ],
+                    "assignments": null
+                }
+            ],
+            "children": [
+                {
+                    "type": 0,
+                    "val": "\n\tlet d;\n\td++;\n\tlet let "
+                },
+                {
+                    "type": 2,
+                    "declarations": [
+                        {
+                            "identifiers": [
+                                {
+                                    "type": 4,
+                                    "val": "f"
+                                }
+                            ],
+                            "assignments": null
+                        }
+                    ],
+                    "children": [
+                        {
+                            "type": 0,
+                            "val": " g++; "
+                        }
+                    ]
+                },
+                {
+                    "type": 0,
+                    "val": "\n"
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\nfunction bar() {\n\t"
+        },
+        {
+            "type": 2,
+            "declarations": [
+                {
+                    "identifiers": [
+                        {
+                            "type": 4,
+                            "val": "h"
+                        }
+                    ],
+                    "assignments": null
+                }
+            ],
+            "children": [
+                {
+                    "type": 0,
+                    "val": "\n\t\tlet (i) let(j) "
+                },
+                {
+                    "type": 2,
+                    "declarations": [
+                        {
+                            "identifiers": [
+                                {
+                                    "type": 4,
+                                    "val": "k"
+                                }
+                            ],
+                            "assignments": null
+                        }
+                    ],
+                    "children": [
+                        {
+                            "type": 0,
+                            "val": " l++; "
+                        }
+                    ]
+                },
+                {
+                    "type": 0,
+                    "val": "\n\t"
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n}\n\n"
+        },
+        {
+            "type": 2,
+            "declarations": [
+                {
+                    "identifiers": [
+                        {
+                            "type": 4,
+                            "val": "m"
+                        }
+                    ],
+                    "assignments": null
+                }
+            ],
+            "children": [
+                {
+                    "type": 0,
+                    "val": "\n\tlet m;\n\tm++;\n\t"
+                },
+                {
+                    "type": 2,
+                    "declarations": [
+                        {
+                            "identifiers": [
+                                {
+                                    "type": 4,
+                                    "val": "n"
+                                }
+                            ],
+                            "assignments": null
+                        }
+                    ],
+                    "children": [
+                        {
+                            "type": 0,
+                            "val": "\n\t\tlet n;\n\t\tn++;\n\t\t"
+                        },
+                        {
+                            "type": 2,
+                            "declarations": [
+                                {
+                                    "identifiers": [
+                                        {
+                                            "type": 4,
+                                            "val": "o"
+                                        }
+                                    ],
+                                    "assignments": null
+                                }
+                            ],
+                            "children": [
+                                {
+                                    "type": 0,
+                                    "val": "\n\t\t\tlet o;\n\t\t\to++;\n\t\t\tlet let (p)\n\t\t"
+                                }
+                            ]
+                        },
+                        {
+                            "type": 0,
+                            "val": "\n\t"
+                        }
+                    ]
+                },
+                {
+                    "type": 0,
+                    "val": "\n"
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n"
+        }
+    ]
+}

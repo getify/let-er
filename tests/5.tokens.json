@@ -30,6 +30,45 @@
                 },
                 {
                     "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\tlet b;\n}\n\n"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "a"
+                },
+                {
+                    "type": 3,
                     "val": ","
                 },
                 {
@@ -117,6 +156,6 @@
     "warnings": [
         "Skipping: let (e) foo(",
         "Skipping: let (g=)",
-        "Unterminated let-block at end of file"
+        "Unterminated let-block at end of code"
     ]
 }

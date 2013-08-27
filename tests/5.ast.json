@@ -1,5 +1,5 @@
 {
-    "tokens": [
+    "AST": [
         {
             "type": 1,
             "val": "/* test #5\n * testing how let-er works\n */",
@@ -10,113 +10,86 @@
             "val": "\n\n"
         },
         {
-            "type": 6,
-            "tokens": [
+            "type": 2,
+            "declarations": [
+                {
+                    "identifiers": [
+                        {
+                            "type": 4,
+                            "val": "a"
+                        }
+                    ],
+                    "assignments": null
+                }
+            ],
+            "children": [
+                {
+                    "type": 0,
+                    "val": "\n\tlet b;\n}\n\n"
+                },
                 {
                     "type": 2,
-                    "val": "let"
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "("
-                },
-                {
-                    "type": 4,
-                    "val": "a"
-                },
-                {
-                    "type": 3,
-                    "val": ","
-                },
-                {
-                    "type": 4,
-                    "val": "b"
-                },
-                {
-                    "type": 3,
-                    "val": ")",
-                    "let_decl_list_complete": true
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "{",
-                    "let_header_complete": true
+                    "declarations": [
+                        {
+                            "identifiers": [
+                                {
+                                    "type": 4,
+                                    "val": "a"
+                                }
+                            ],
+                            "assignments": null
+                        },
+                        {
+                            "identifiers": [
+                                {
+                                    "type": 4,
+                                    "val": "b"
+                                }
+                            ],
+                            "assignments": null
+                        }
+                    ],
+                    "children": [
+                        {
+                            "type": 0,
+                            "val": "\n\tlet c = "
+                        },
+                        {
+                            "type": 1,
+                            "val": "3",
+                            "literal": 5
+                        },
+                        {
+                            "type": 0,
+                            "val": ";\n\t"
+                        },
+                        {
+                            "type": 2,
+                            "declarations": [
+                                {
+                                    "identifiers": [
+                                        {
+                                            "type": 4,
+                                            "val": "d"
+                                        }
+                                    ],
+                                    "assignments": null
+                                }
+                            ],
+                            "children": [
+                                {
+                                    "type": 0,
+                                    "val": " d++; "
+                                }
+                            ]
+                        },
+                        {
+                            "type": 0,
+                            "val": "\n\tlet (e) foo({f:e});\n\tlet (g=){g++}\n"
+                        }
+                    ]
                 }
             ]
-        },
-        {
-            "type": 0,
-            "val": "\n\tlet c = "
-        },
-        {
-            "type": 1,
-            "val": "3",
-            "literal": 5
-        },
-        {
-            "type": 0,
-            "val": ";\n\t"
-        },
-        {
-            "type": 6,
-            "tokens": [
-                {
-                    "type": 2,
-                    "val": "let"
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "("
-                },
-                {
-                    "type": 4,
-                    "val": "d"
-                },
-                {
-                    "type": 3,
-                    "val": ")",
-                    "let_decl_list_complete": true
-                },
-                {
-                    "type": 0,
-                    "val": " "
-                },
-                {
-                    "type": 3,
-                    "val": "{",
-                    "let_header_complete": true
-                }
-            ]
-        },
-        {
-            "type": 0,
-            "val": " d++; "
-        },
-        {
-            "type": 3,
-            "val": "}",
-            "let_block_complete": true
-        },
-        {
-            "type": 0,
-            "val": "\n\tlet (e) foo({f:e});\n\tlet (g=){g++}\n"
         }
-    ],
-    "warnings": [
-        "Skipping: let (e) foo(",
-        "Skipping: let (g=)",
-        "Unterminated let-block at end of file"
     ]
 }
