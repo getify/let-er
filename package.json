@@ -1,6 +1,6 @@
 {
 	"name": "let-er",
-	"version": "0.3.1-c",
+	"version": "0.3.1-d",
 	"description": "Transpile let-block block-scoping into ES3 or ES6",
 	"main": "lib/let-er.js",
 	"scripts": {
