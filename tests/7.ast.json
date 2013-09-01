@@ -1,0 +1,355 @@
+{
+    "AST": [
+        {
+            "type": 1,
+            "val": "/* test #7\n * testing how let-er works\n */",
+            "literal": 1
+        },
+        {
+            "type": 0,
+            "val": "\n\n"
+        },
+        {
+            "type": 2,
+            "before_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
+            "decls": [
+                {
+                    "identifiers": [
+                        {
+                            "type": 4,
+                            "val": "a"
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "assignments": [
+                        {
+                            "type": 5,
+                            "val": " function () {\n    "
+                        },
+                        {
+                            "type": 2,
+                            "before_decls": [
+                                {
+                                    "type": 0,
+                                    "val": " "
+                                }
+                            ],
+                            "decls": [
+                                {
+                                    "identifiers": [
+                                        {
+                                            "type": 4,
+                                            "val": "b"
+                                        },
+                                        {
+                                            "type": 0,
+                                            "val": " "
+                                        }
+                                    ],
+                                    "assignments": [
+                                        {
+                                            "type": 5,
+                                            "val": " function () {\n        "
+                                        },
+                                        {
+                                            "type": 2,
+                                            "before_decls": [
+                                                {
+                                                    "type": 0,
+                                                    "val": " "
+                                                }
+                                            ],
+                                            "decls": [
+                                                {
+                                                    "identifiers": [
+                                                        {
+                                                            "type": 4,
+                                                            "val": "c"
+                                                        },
+                                                        {
+                                                            "type": 0,
+                                                            "val": " "
+                                                        }
+                                                    ],
+                                                    "assignments": [
+                                                        {
+                                                            "type": 5,
+                                                            "val": " function () {}"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "after_decls": [
+                                                {
+                                                    "type": 0,
+                                                    "val": " "
+                                                }
+                                            ],
+                                            "children": [
+                                                {
+                                                    "type": 0,
+                                                    "val": "\n            c();\n            "
+                                                },
+                                                {
+                                                    "type": 2,
+                                                    "before_decls": [
+                                                        {
+                                                            "type": 0,
+                                                            "val": " "
+                                                        }
+                                                    ],
+                                                    "decls": [
+                                                        {
+                                                            "identifiers": [
+                                                                {
+                                                                    "type": 4,
+                                                                    "val": "c2"
+                                                                },
+                                                                {
+                                                                    "type": 0,
+                                                                    "val": " "
+                                                                }
+                                                            ],
+                                                            "assignments": [
+                                                                {
+                                                                    "type": 5,
+                                                                    "val": " function () {\n                return "
+                                                                },
+                                                                {
+                                                                    "type": 1,
+                                                                    "val": "3",
+                                                                    "literal": 5
+                                                                },
+                                                                {
+                                                                    "type": 5,
+                                                                    "val": ";\n            }"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "after_decls": [
+                                                        {
+                                                            "type": 0,
+                                                            "val": " "
+                                                        }
+                                                    ],
+                                                    "children": [
+                                                        {
+                                                            "type": 0,
+                                                            "val": "\n                c2()++;\n            "
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": 0,
+                                                    "val": "\n        "
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": 5,
+                                            "val": "\n    }"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "after_decls": [
+                                {
+                                    "type": 0,
+                                    "val": " "
+                                }
+                            ],
+                            "children": [
+                                {
+                                    "type": 0,
+                                    "val": "\n        b();\n        "
+                                },
+                                {
+                                    "type": 2,
+                                    "before_decls": [
+                                        {
+                                            "type": 0,
+                                            "val": " "
+                                        }
+                                    ],
+                                    "decls": [
+                                        {
+                                            "identifiers": [
+                                                {
+                                                    "type": 4,
+                                                    "val": "b2"
+                                                },
+                                                {
+                                                    "type": 0,
+                                                    "val": " "
+                                                }
+                                            ],
+                                            "assignments": [
+                                                {
+                                                    "type": 5,
+                                                    "val": " function () {\n            return "
+                                                },
+                                                {
+                                                    "type": 1,
+                                                    "val": "3",
+                                                    "literal": 5
+                                                },
+                                                {
+                                                    "type": 5,
+                                                    "val": ";\n        }"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "after_decls": [
+                                        {
+                                            "type": 0,
+                                            "val": " "
+                                        }
+                                    ],
+                                    "children": [
+                                        {
+                                            "type": 0,
+                                            "val": "\n            b2()++;\n        "
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": 0,
+                                    "val": "\n    "
+                                }
+                            ]
+                        },
+                        {
+                            "type": 5,
+                            "val": "\n}"
+                        }
+                    ]
+                }
+            ],
+            "after_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
+            "children": [
+                {
+                    "type": 0,
+                    "val": "\n    a();\n    "
+                },
+                {
+                    "type": 2,
+                    "before_decls": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "decls": [
+                        {
+                            "identifiers": [
+                                {
+                                    "type": 4,
+                                    "val": "a2"
+                                },
+                                {
+                                    "type": 0,
+                                    "val": " "
+                                }
+                            ],
+                            "assignments": [
+                                {
+                                    "type": 5,
+                                    "val": " function () {\n        "
+                                },
+                                {
+                                    "type": 2,
+                                    "before_decls": [
+                                        {
+                                            "type": 0,
+                                            "val": " "
+                                        }
+                                    ],
+                                    "decls": [
+                                        {
+                                            "identifiers": [
+                                                {
+                                                    "type": 4,
+                                                    "val": "a22"
+                                                },
+                                                {
+                                                    "type": 0,
+                                                    "val": " "
+                                                }
+                                            ],
+                                            "assignments": [
+                                                {
+                                                    "type": 5,
+                                                    "val": " function () {\n            return "
+                                                },
+                                                {
+                                                    "type": 1,
+                                                    "val": "3",
+                                                    "literal": 5
+                                                },
+                                                {
+                                                    "type": 5,
+                                                    "val": ";\n        }"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "after_decls": [
+                                        {
+                                            "type": 0,
+                                            "val": " "
+                                        }
+                                    ],
+                                    "children": [
+                                        {
+                                            "type": 0,
+                                            "val": "\n            return a22();\n        "
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": 5,
+                                    "val": "\n    }"
+                                }
+                            ]
+                        }
+                    ],
+                    "after_decls": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "children": [
+                        {
+                            "type": 0,
+                            "val": "\n        return a2();\n    "
+                        }
+                    ]
+                },
+                {
+                    "type": 0,
+                    "val": "\n"
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n"
+        }
+    ]
+}

@@ -22,7 +22,7 @@
                 },
                 {
                     "type": 1,
-                    "val": "/*dropped*/",
+                    "val": "/*kept*/",
                     "literal": 1
                 },
                 {
@@ -144,7 +144,7 @@
                 },
                 {
                     "type": 1,
-                    "val": "/*dropped*/",
+                    "val": "/*kept*/",
                     "literal": 1
                 },
                 {
@@ -184,6 +184,283 @@
             "type": 1,
             "val": "// bam!",
             "literal": 1
+        },
+        {
+            "type": 0,
+            "val": "\n\n"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 1,
+                    "val": "/*foo*/",
+                    "literal": 1
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "a"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "=",
+                    "assignment": true
+                },
+                {
+                    "type": 5,
+                    "val": " function () {\n\t"
+                },
+                {
+                    "type": 6,
+                    "tokens": [
+                        {
+                            "type": 2,
+                            "val": "let"
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*baz*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 3,
+                            "val": "("
+                        },
+                        {
+                            "type": 4,
+                            "val": "b"
+                        },
+                        {
+                            "type": 3,
+                            "val": ")",
+                            "let_decl_list_complete": true
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*bam*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 3,
+                            "val": "{",
+                            "let_header_complete": true
+                        }
+                    ]
+                },
+                {
+                    "type": 0,
+                    "val": "\n\t\t"
+                },
+                {
+                    "type": 6,
+                    "tokens": [
+                        {
+                            "type": 2,
+                            "val": "let"
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*fun*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 3,
+                            "val": "("
+                        },
+                        {
+                            "type": 4,
+                            "val": "c"
+                        },
+                        {
+                            "type": 3,
+                            "val": ")",
+                            "let_decl_list_complete": true
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*fam*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 3,
+                            "val": "{",
+                            "let_header_complete": true
+                        }
+                    ]
+                },
+                {
+                    "type": 0,
+                    "val": "\n\t\t\tc;\n\t\t"
+                },
+                {
+                    "type": 3,
+                    "val": "}",
+                    "let_block_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": "\n\t"
+                },
+                {
+                    "type": 3,
+                    "val": "}",
+                    "let_block_complete": true
+                },
+                {
+                    "type": 5,
+                    "val": "\n}"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 1,
+                    "val": "/*bar*/",
+                    "literal": 1
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\t"
+        },
+        {
+            "type": 6,
+            "tokens": [
+                {
+                    "type": 2,
+                    "val": "let"
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 1,
+                    "val": "/*boo*/",
+                    "literal": 1
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "("
+                },
+                {
+                    "type": 4,
+                    "val": "d"
+                },
+                {
+                    "type": 3,
+                    "val": ")",
+                    "let_decl_list_complete": true
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 1,
+                    "val": "/*bim*/",
+                    "literal": 1
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 3,
+                    "val": "{",
+                    "let_header_complete": true
+                }
+            ]
+        },
+        {
+            "type": 0,
+            "val": "\n\t\td;\n\t"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
+        },
+        {
+            "type": 0,
+            "val": "\n"
+        },
+        {
+            "type": 3,
+            "val": "}",
+            "let_block_complete": true
         },
         {
             "type": 0,

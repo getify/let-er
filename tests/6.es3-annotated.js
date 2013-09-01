@@ -21,7 +21,7 @@ function bar() {
 	try{throw void 0}catch
 /*let*/ (h) {
 		let (i) let(j) try{throw void 0}catch
-/*let*/ (k) { l++; }
+/*let*/(k) { l++; }
 	}
 }
 

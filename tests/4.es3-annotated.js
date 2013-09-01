@@ -15,7 +15,7 @@ try{throw void 0}catch
 			}
 		}}
 	}}catch
-/*let*/ (b /* = function(g){ 		let (... */) {
+/*let*/ (b /* = function(g){ let (..... */) {
 try{throw 3.14}catch
 /*let*/ (e /* = 3.14 */) {
 	e++; // sure, why not increment Pi?

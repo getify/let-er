@@ -2,6 +2,6 @@
  * testing how let-er works
  */
 
-{ let a = 1, b = 2;
+{ let a = 1, b = 2; 
 	console.log(a, b);
 }

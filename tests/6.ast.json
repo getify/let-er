@@ -11,7 +11,13 @@
         },
         {
             "type": 2,
-            "declarations": [
+            "before_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
+            "decls": [
                 {
                     "identifiers": [
                         {
@@ -22,6 +28,12 @@
                     "assignments": null
                 }
             ],
+            "after_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
             "children": [
                 {
                     "type": 0,
@@ -29,7 +41,13 @@
                 },
                 {
                     "type": 2,
-                    "declarations": [
+                    "before_decls": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "decls": [
                         {
                             "identifiers": [
                                 {
@@ -38,6 +56,12 @@
                                 }
                             ],
                             "assignments": null
+                        }
+                    ],
+                    "after_decls": [
+                        {
+                            "type": 0,
+                            "val": " "
                         }
                     ],
                     "children": [
@@ -59,7 +83,13 @@
         },
         {
             "type": 2,
-            "declarations": [
+            "before_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
+            "decls": [
                 {
                     "identifiers": [
                         {
@@ -70,6 +100,12 @@
                     "assignments": null
                 }
             ],
+            "after_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
             "children": [
                 {
                     "type": 0,
@@ -77,7 +113,8 @@
                 },
                 {
                     "type": 2,
-                    "declarations": [
+                    "before_decls": [],
+                    "decls": [
                         {
                             "identifiers": [
                                 {
@@ -86,6 +123,12 @@
                                 }
                             ],
                             "assignments": null
+                        }
+                    ],
+                    "after_decls": [
+                        {
+                            "type": 0,
+                            "val": " "
                         }
                     ],
                     "children": [
@@ -107,7 +150,13 @@
         },
         {
             "type": 2,
-            "declarations": [
+            "before_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
+            "decls": [
                 {
                     "identifiers": [
                         {
@@ -118,6 +167,12 @@
                     "assignments": null
                 }
             ],
+            "after_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
             "children": [
                 {
                     "type": 0,
@@ -125,7 +180,13 @@
                 },
                 {
                     "type": 2,
-                    "declarations": [
+                    "before_decls": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "decls": [
                         {
                             "identifiers": [
                                 {
@@ -136,6 +197,12 @@
                             "assignments": null
                         }
                     ],
+                    "after_decls": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
                     "children": [
                         {
                             "type": 0,
@@ -143,7 +210,13 @@
                         },
                         {
                             "type": 2,
-                            "declarations": [
+                            "before_decls": [
+                                {
+                                    "type": 0,
+                                    "val": " "
+                                }
+                            ],
+                            "decls": [
                                 {
                                     "identifiers": [
                                         {
@@ -152,6 +225,12 @@
                                         }
                                     ],
                                     "assignments": null
+                                }
+                            ],
+                            "after_decls": [
+                                {
+                                    "type": 0,
+                                    "val": " "
                                 }
                             ],
                             "children": [

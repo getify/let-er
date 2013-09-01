@@ -11,7 +11,13 @@
         },
         {
             "type": 2,
-            "declarations": [
+            "before_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
+            "decls": [
                 {
                     "identifiers": [
                         {
@@ -92,6 +98,12 @@
                             "literal": 4
                         }
                     ]
+                }
+            ],
+            "after_decls": [
+                {
+                    "type": 0,
+                    "val": " "
                 }
             ],
             "children": [

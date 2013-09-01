@@ -11,7 +11,18 @@
         },
         {
             "type": 2,
-            "declarations": [
+            "before_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 1,
+                    "val": "/*kept*/",
+                    "literal": 1
+                }
+            ],
+            "decls": [
                 {
                     "identifiers": [
                         {
@@ -115,6 +126,21 @@
                     ]
                 }
             ],
+            "after_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 1,
+                    "val": "/*kept*/",
+                    "literal": 1
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
             "children": [
                 {
                     "type": 0,
@@ -139,6 +165,231 @@
             "type": 1,
             "val": "// bam!",
             "literal": 1
+        },
+        {
+            "type": 0,
+            "val": "\n\n"
+        },
+        {
+            "type": 2,
+            "before_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 1,
+                    "val": "/*foo*/",
+                    "literal": 1
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
+            "decls": [
+                {
+                    "identifiers": [
+                        {
+                            "type": 4,
+                            "val": "a"
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "assignments": [
+                        {
+                            "type": 5,
+                            "val": " function () {\n\t"
+                        },
+                        {
+                            "type": 2,
+                            "before_decls": [
+                                {
+                                    "type": 0,
+                                    "val": " "
+                                },
+                                {
+                                    "type": 1,
+                                    "val": "/*baz*/",
+                                    "literal": 1
+                                },
+                                {
+                                    "type": 0,
+                                    "val": " "
+                                }
+                            ],
+                            "decls": [
+                                {
+                                    "identifiers": [
+                                        {
+                                            "type": 4,
+                                            "val": "b"
+                                        }
+                                    ],
+                                    "assignments": null
+                                }
+                            ],
+                            "after_decls": [
+                                {
+                                    "type": 0,
+                                    "val": " "
+                                },
+                                {
+                                    "type": 1,
+                                    "val": "/*bam*/",
+                                    "literal": 1
+                                },
+                                {
+                                    "type": 0,
+                                    "val": " "
+                                }
+                            ],
+                            "children": [
+                                {
+                                    "type": 0,
+                                    "val": "\n\t\t"
+                                },
+                                {
+                                    "type": 2,
+                                    "before_decls": [
+                                        {
+                                            "type": 0,
+                                            "val": " "
+                                        },
+                                        {
+                                            "type": 1,
+                                            "val": "/*fun*/",
+                                            "literal": 1
+                                        },
+                                        {
+                                            "type": 0,
+                                            "val": " "
+                                        }
+                                    ],
+                                    "decls": [
+                                        {
+                                            "identifiers": [
+                                                {
+                                                    "type": 4,
+                                                    "val": "c"
+                                                }
+                                            ],
+                                            "assignments": null
+                                        }
+                                    ],
+                                    "after_decls": [
+                                        {
+                                            "type": 0,
+                                            "val": " "
+                                        },
+                                        {
+                                            "type": 1,
+                                            "val": "/*fam*/",
+                                            "literal": 1
+                                        },
+                                        {
+                                            "type": 0,
+                                            "val": " "
+                                        }
+                                    ],
+                                    "children": [
+                                        {
+                                            "type": 0,
+                                            "val": "\n\t\t\tc;\n\t\t"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": 0,
+                                    "val": "\n\t"
+                                }
+                            ]
+                        },
+                        {
+                            "type": 5,
+                            "val": "\n}"
+                        }
+                    ]
+                }
+            ],
+            "after_decls": [
+                {
+                    "type": 0,
+                    "val": " "
+                },
+                {
+                    "type": 1,
+                    "val": "/*bar*/",
+                    "literal": 1
+                },
+                {
+                    "type": 0,
+                    "val": " "
+                }
+            ],
+            "children": [
+                {
+                    "type": 0,
+                    "val": "\n\t"
+                },
+                {
+                    "type": 2,
+                    "before_decls": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*boo*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "decls": [
+                        {
+                            "identifiers": [
+                                {
+                                    "type": 4,
+                                    "val": "d"
+                                }
+                            ],
+                            "assignments": null
+                        }
+                    ],
+                    "after_decls": [
+                        {
+                            "type": 0,
+                            "val": " "
+                        },
+                        {
+                            "type": 1,
+                            "val": "/*bim*/",
+                            "literal": 1
+                        },
+                        {
+                            "type": 0,
+                            "val": " "
+                        }
+                    ],
+                    "children": [
+                        {
+                            "type": 0,
+                            "val": "\n\t\td;\n\t"
+                        }
+                    ]
+                },
+                {
+                    "type": 0,
+                    "val": "\n"
+                }
+            ]
         },
         {
             "type": 0,

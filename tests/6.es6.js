@@ -9,25 +9,25 @@ function foo() {
 	let (b)
 }
 
-{ let c;
+{ let c; 
 	let d;
 	d++;
-	let let { let f; g++; }
+	let let { let f;  g++; }
 }
 
 function bar() {
-	{ let h;
-		let (i) let(j) { let k; l++; }
+	{ let h; 
+		let (i) let(j) { letk;  l++; }
 	}
 }
 
-{ let m;
+{ let m; 
 	let m;
 	m++;
-	{ let n;
+	{ let n; 
 		let n;
 		n++;
-		{ let o;
+		{ let o; 
 			let o;
 			o++;
 			let let (p)
