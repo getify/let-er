@@ -93,16 +93,7 @@
         },
         {
             "type": 0,
-            "val": "\n\tlet c = "
-        },
-        {
-            "type": 1,
-            "val": "3",
-            "literal": 5
-        },
-        {
-            "type": 0,
-            "val": ";\n\t"
+            "val": "\n\tlet c = 3;\n\t"
         },
         {
             "type": 6,

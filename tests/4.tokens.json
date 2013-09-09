@@ -112,16 +112,7 @@
                 },
                 {
                     "type": 0,
-                    "val": "\n\t\t\td = c * "
-                },
-                {
-                    "type": 1,
-                    "val": "2",
-                    "literal": 5
-                },
-                {
-                    "type": 0,
-                    "val": ";\n\t\t\t"
+                    "val": "\n\t\t\td = c * 2;\n\t\t\t"
                 },
                 {
                     "type": 6,
@@ -208,16 +199,7 @@
                 },
                 {
                     "type": 5,
-                    "val": " "
-                },
-                {
-                    "type": 1,
-                    "val": "3.14",
-                    "literal": 5
-                },
-                {
-                    "type": 5,
-                    "val": "\n"
+                    "val": " 3.14\n"
                 },
                 {
                     "type": 3,
@@ -278,16 +260,7 @@
                 },
                 {
                     "type": 5,
-                    "val": " b(e * "
-                },
-                {
-                    "type": 1,
-                    "val": "3",
-                    "literal": 5
-                },
-                {
-                    "type": 5,
-                    "val": ")"
+                    "val": " b(e * 3)"
                 },
                 {
                     "type": 3,
@@ -339,16 +312,7 @@
                 },
                 {
                     "type": 5,
-                    "val": " h - "
-                },
-                {
-                    "type": 1,
-                    "val": "1",
-                    "literal": 5
-                },
-                {
-                    "type": 5,
-                    "val": ""
+                    "val": " h - 1"
                 },
                 {
                     "type": 3,

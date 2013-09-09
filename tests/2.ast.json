@@ -47,9 +47,8 @@
                             "literal": 1
                         },
                         {
-                            "type": 1,
-                            "val": "2",
-                            "literal": 5
+                            "type": 5,
+                            "val": "2"
                         },
                         {
                             "type": 1,
@@ -103,16 +102,7 @@
                         },
                         {
                             "type": 5,
-                            "val": " "
-                        },
-                        {
-                            "type": 1,
-                            "val": "42",
-                            "literal": 5
-                        },
-                        {
-                            "type": 5,
-                            "val": " "
+                            "val": " 42 "
                         },
                         {
                             "type": 1,

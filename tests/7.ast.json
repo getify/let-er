@@ -121,16 +121,7 @@
                                                             "assignments": [
                                                                 {
                                                                     "type": 5,
-                                                                    "val": " function () {\n                return "
-                                                                },
-                                                                {
-                                                                    "type": 1,
-                                                                    "val": "3",
-                                                                    "literal": 5
-                                                                },
-                                                                {
-                                                                    "type": 5,
-                                                                    "val": ";\n            }"
+                                                                    "val": " function () {\n                return 3;\n            }"
                                                                 }
                                                             ]
                                                         }
@@ -195,16 +186,7 @@
                                             "assignments": [
                                                 {
                                                     "type": 5,
-                                                    "val": " function () {\n            return "
-                                                },
-                                                {
-                                                    "type": 1,
-                                                    "val": "3",
-                                                    "literal": 5
-                                                },
-                                                {
-                                                    "type": 5,
-                                                    "val": ";\n        }"
+                                                    "val": " function () {\n            return 3;\n        }"
                                                 }
                                             ]
                                         }
@@ -294,16 +276,7 @@
                                             "assignments": [
                                                 {
                                                     "type": 5,
-                                                    "val": " function () {\n            return "
-                                                },
-                                                {
-                                                    "type": 1,
-                                                    "val": "3",
-                                                    "literal": 5
-                                                },
-                                                {
-                                                    "type": 5,
-                                                    "val": ";\n        }"
+                                                    "val": " function () {\n            return 3;\n        }"
                                                 }
                                             ]
                                         }

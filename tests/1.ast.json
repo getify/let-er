@@ -32,12 +32,7 @@
                     "assignments": [
                         {
                             "type": 5,
-                            "val": " "
-                        },
-                        {
-                            "type": 1,
-                            "val": "1",
-                            "literal": 5
+                            "val": " 1"
                         }
                     ]
                 },
@@ -59,12 +54,7 @@
                     "assignments": [
                         {
                             "type": 5,
-                            "val": " "
-                        },
-                        {
-                            "type": 1,
-                            "val": "2",
-                            "literal": 5
+                            "val": " 2"
                         }
                     ]
                 }

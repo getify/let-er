@@ -10,7 +10,7 @@ try{throw function () {
             try{throw function () {
                 return 3;
             }}catch
-/*let*/ (c2 /* = function () { return */) {
+/*let*/ (c2 /* = function () { return... */) {
                 c2()++;
             }
         }
@@ -20,7 +20,7 @@ try{throw function () {
         try{throw function () {
             return 3;
         }}catch
-/*let*/ (b2 /* = function () { return */) {
+/*let*/ (b2 /* = function () { return... */) {
             b2()++;
         }
     }
@@ -31,7 +31,7 @@ try{throw function () {
         try{throw function () {
             return 3;
         }}catch
-/*let*/ (a22 /* = function () { return */) {
+/*let*/ (a22 /* = function () { return... */) {
             return a22();
         }
     }}catch
