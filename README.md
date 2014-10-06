@@ -6,18 +6,16 @@ ES6 is bringing the `let x = "foo"` syntax to JavaScript, which basically hijack
 1. ES6 is a long time from being fully ubiquitous.
 2. And even when ES6 arrives, the more preferable `let ( .. ) { .. }` block syntax was rejected and so won't be valid. This is most unfortunate, since that syntax has a more readable form, creating explicit blocks for block-scoping instead of hijacking them.
 
-*let-er* solves both these problems. By simply writing `let ( .. ) { .. }` style code, and then running your code through *let-er* as a build-step, your block-scoping will work exactly as you expect, **today**, in all ES3+ browsers and environments!
+*let-er* solves both these problems. By simply writing `let ( .. ) { .. }` style code, and then running your code through *let-er* as a build-step, your block-scoping will work exactly as you expect, **today**.
 
-## ES6 Only?
-If you're already targeting an ES6-only environment (like node.js for instance), *let-er* is still very helpful. By using the `es6` [option setting](#options), `let ( .. ) { .. }` style code (which is not valid ES6) will be transpiled into valid ES6 code like `{ let .. ; .. }`.
+By default, *let-er* transpiles your `let ( .. ) { .. }` blocks into standard ES6 `{ let .. ; .. }` blocks. If you pass the [`es3` option setting](#options), you can even target ES3+ browsers, using the `try..catch` hack.
 
 ## What does it look like?
-
 Write block-scoped code like this:
 
 ```js
 let (x = "foo") {
-  console.log(x); // "foo"
+	console.log(x); // "foo"
 }
 
 console.log(x); // Reference Error!
@@ -33,7 +31,7 @@ Let's actually break the question down into two parts:
 1. How does block-scoping affect my [coding style/maintainability/behavior](#coding-stylemaintainabilitybehavior)?
 2. How does block-scoping affect my [code performance](#code-performance) (memory, GC, etc)?
 
-### coding style/maintainability/behavior
+### Coding Style/Maintainability/Behavior
 There's a concept in computer science called the "Principle of Least Exposure", which is broadly applicable in a lot of areas, but in particular here, we are using that to mean: "expose a variable and its value for only as long as it's needed, no more, no less."
 
 Take this code snippet:
@@ -110,7 +108,7 @@ function foo() {
 
 Now, the behavior of `i` will be to be block-scoped to that part of the code, and it will be clear not only stylistically but also functionally that `i` doesn't exist anywhere but in that block. You'll get helpful "ReferenceError" errors if you try to reference `i` elsewhere. Yay.
 
-### code performance
+### Code Performance
 Now, let's examine how `let` ***may*** affect your code's performance. I say "may" for a couple of reasons. First, the number of engine implementations of `let` is pretty limited, so we can't *really* test in the real world just how much it will or won't affect performance. We can make intelligent guesses about the possibilities.
 
 Secondly, what the engine can do in theory and what it *will* do in the real-world are often very different. These are implementation details and we should be careful not to get too much "into the weeds" here. Only those who actually make the engines are qualified to *really* obsess too much here.
@@ -170,7 +168,31 @@ Simple change, but *potentially* a big performance difference. Now, it's clear t
 Will the engines do this? I dunno. You dunno, probably. But they *can*. And they *might*. And they *might* be able to more efficiently than if you hadn't used block-scoping.
 
 ## How does *let-er* work?
-*let-er* will, by default, transform your `let ( .. ) { .. }` style blocks into this type of ES3-compatible code:
+*let-er* will, by default, transform your `let ( .. ) { .. }` style blocks into this standard ES6-compatible code.
+
+This:
+```js
+let (x = "foo") {
+	console.log(x); // "foo"
+}
+
+console.log(x); // Reference Error!
+```
+
+Becomes this:
+```js
+{ let x = "foo";
+  console.log(x); // "foo"
+}
+
+console.log(x); // Reference Error!
+```
+
+Of course, once you have standard ES6 code, you can either run it directly in an ES6 compatible browser/environment, or you can then run the whole code base through a ES6-ES3/5 transpiler, so that you can target older environments.
+
+In otherwords, *let-er* should be used as a preprocessor to bring your code to ES6 compliance, and then go from there as you normally would.
+
+If you don't plan to use another ES6 transpiler, you can make *let-er* target ES3+ compatibility, such that the code produced would be:
 
 ```js
 try{throw "foo"}catch
@@ -193,21 +215,21 @@ try{throw "foo"}catch(x){
 console.log(x); // Reference Error!
 ```
 
-And the ES6-only version of the transpiled code would be:
-
-```js
-{ let x = "foo";
-  console.log(x); // "foo"
-}
-
-console.log(x); // Reference Error!
-```
-
-### Multiple let-declarations
-Multiple let-declarations are supported:
+### Multiple `let`-declarations
+Multiple `let`-declarations are supported:
 
 ```js
 let (x = "foo", y = "bar") {
+  console.log(x, y); // "foo" "bar"
+}
+
+console.log(x, y); // Reference Error!
+```
+
+The ES6 transpiled code will look like this:
+
+```js
+{ let x = "foo", y = "bar";
   console.log(x, y); // "foo" "bar"
 }
 
@@ -237,18 +259,10 @@ try{throw "foo"}catch(x){try{throw "bar"}catch(y){
 console.log(x, y); // Reference Error!
 ```
 
-And in ES6-only targeting mode:
-
-```js
-{ let x = "foo", y = "bar";
-  console.log(x, y); // "foo" "bar"
-}
-
-console.log(x, y); // Reference Error!
-```
-
 ## Performance
-You may be wondering if there's some crazy performance hit to the ES3 `try / catch` hack. So, here's several thoughts to address that concern:
+Of course, the ES6 transpilation has zero performance difference to regular ES6.
+
+But, you may be wondering if there's some crazy performance hit to the ES3 `try / catch` hack. So, here's several thoughts to address that concern:
 
 1. Comparing block-scoped code to non-block-scoped code performance-wise wouldn't really tell you what you might expect. You might intuitively be wondering if the performance hit is small enough (or zero!) so that you can use block-scoping "for free". It **certainly is not**.
 
@@ -264,13 +278,7 @@ You may be wondering if there's some crazy performance hit to the ES3 `try / cat
 
 3. This transpiling to ES3 via `try / catch` is an admitted polyfill. Polyfills almost always have worse performance than their newer native counterparts. ES6 is giving us the `let` keyword for real block-scoping, and it certainly will be faster than the polyfill hack.
 
-   Fortunately, *let-er* lets you [target ES6 only](#options) code if you happen to only care about ES6 environments (node.js for instance). As you can see above, the ES6-only targeting transpiles to usage of the native `let ..;` declaration syntax, which should have all the best native performance you can get.
-
-   This makes it more "future proof" to use *let-er* now, in ES3 polyfill mode, and you'll be able to transparently flip the switch to ES6-only targeting whenever that's appropriate to do so.
-
-4. If you still doubt the veracity of using the `try / catch` hack for ES3 block-scoping, note that [Google Traceur ES6 Transpiler](https://github.com/google/traceur-compiler) uses the same hack.
-
-   Here's a [demo to try it out](http://traceur-compiler.googlecode.com/git/demo/repl.html#if%20%28true%29%20{%0A%20%20let%20x%20%3D%202%3B%0A%20%20console.log%28x%29%3B%20%2F%2F%202%0A}). **NOTE:** you will need to turn on "Options" -> "Show all options" -> "blockBinding" for it to work.
+   Fortunately, *let-er* defaults to ES6 code if you happen to only care about ES6 environments (node.js for instance). As you can see above, the ES6-only targeting transpiles to usage of the native `let ..;` declaration syntax, which should have all the best native performance you can get.
 
 ## API
 The `compile(..)` API method takes code and detects if there are any matching `let ( .. ) { .. }` style blocks that it needs to transpile. You get a single code string back, ready to go.
@@ -295,8 +303,7 @@ For example, `letEr.TOKEN.LET_HEADER` is the value that identifies the token lis
 Most people will not need to use these additional *let-er* API methods, but if you do need to perform extra analysis or transforms, the API provides you that flexibility. **NOTE:** Be careful to not modify/invalidate the format of these element structures, or *let-er* will likely not be able to consume them again for the next step.
 
 ## CLI
-
-*let-er* comes with a node.js tool called `leter`, in the "bin/" directory, which is a CLI tool for compiling your let-block JS code.
+*let-er* comes with a node.js tool called `leter` (note the lack of `-`), in the "bin/" directory, which is a CLI tool for compiling your let-block JS code.
 
 Here are the options for the CLI tool:
 
@@ -326,11 +333,11 @@ echo ".. some code .." | bin/let --compile --compile=some/file3.js
 ## Options
 There are two options you can set that control the type of code produced by *let-er* (aka, the `generate(..)` step).
 
-* `letEr.opts.es6` (boolean; default: `false`) - If set to `true`, will assume ES6 where `let` is available, and create an ES6 `{ let x = "foo"; .. }` block instead of the default `try{throw "foo"}catch(x){ .. }` ES3-compatible snippet.
+* `letEr.opts.es3` (boolean; default: `false`) - If set to `true`, will target ES3+ environments with the `try{throw "foo"}catch(x){ .. }` hack syntax.
 
-* `letEr.opts.annotate` (boolean; default: `true`) - If set to `true`, will output additional code comments (as shown in the above example snippets) to annotate to make the compiled code more readable/trackable to the original code. Otherwise, only the bare minimum code will be output.
+* `letEr.opts.annotate` (boolean; default: `true`) - If set to `true`, will output additional code comments (as shown in the above example snippets) to annotate to make the ES3+ compiled code more readable/trackable to the original code. Otherwise, only the bare minimum code will be output.
 
-   **NOTE:** No extra annotations are needed if `letEr.opts.es6` is set, so this option will not have any effect.
+   **NOTE:** This option only matters if the `es3` option is set, and will have no effect otherwise.
 
 ## Warnings
 If there are any warnings/notices produced as part of the lexing or `let` processing, they will be populated in the `letEr.warnings` array. You can call `letEr.reset()` to clear out the warnings list in between separate compilations.

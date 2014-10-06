@@ -161,7 +161,7 @@ test_sources.forEach(function(source,idx){
 	if (!error) {
 		// es3-annotated
 		letEr.opts.annotate = true;
-		letEr.opts.es6 = false;
+		letEr.opts.es3 = true;
 		try {
 			res_code = letEr.generate(AST);
 		}
@@ -178,7 +178,7 @@ test_sources.forEach(function(source,idx){
 	if (!error) {
 		// es3-non-annotated
 		letEr.opts.annotate = false;
-		letEr.opts.es6 = false;
+		letEr.opts.es3 = true;
 		try {
 			res_code = letEr.generate(AST);
 		}
@@ -195,7 +195,7 @@ test_sources.forEach(function(source,idx){
 	if (!error) {
 		// es6
 		letEr.opts.annotate = true;
-		letEr.opts.es6 = true;
+		letEr.opts.es3 = false;
 		try {
 			res_code = letEr.generate(AST);
 		}

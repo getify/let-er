@@ -18,7 +18,7 @@ function printHelp() {
 	console.log("");
 	console.log("--ignore-warnings      ignore and suppress any warnings");
 	console.log("--no-annotate          do not annotate ES3 output");
-	console.log("--es6                  target ES6 for output (use native let keyword)");
+	console.log("--es3                  target ES3+ for output (use try/catch hack)");
 	console.log("");
 	console.log("--compile              compile the JS stream from 'stdin'");
 	console.log("--compile=file         compile a JS file");
@@ -29,7 +29,7 @@ function main() {
 	var output = "", compiles = {};
 
 	letEr.opts.annotate = !OPT_NO_ANNOTATE;
-	letEr.opts.es6 = OPT_ES6;
+	letEr.opts.es3 = OPT_ES3;
 
 	// process stdin, if any
 	if (data) {
@@ -102,7 +102,7 @@ var path = require("path"),
 
 	OPT_IGNORE_WARNINGS = false,
 	OPT_NO_ANNOTATE = false,
-	OPT_ES6 = false,
+	OPT_ES3 = false,
 	OPT_COMPILE_STDIN = false,
 	OPT_COMPILE = [],
 
@@ -122,8 +122,8 @@ process.argv.slice(2).forEach(function(arg){
 		case "--no-annotate":
 			OPT_NO_ANNOTATE = true;
 			break;
-		case "--es6":
-			OPT_ES6 = true;
+		case "--es3":
+			OPT_ES3 = true;
 			break;
 		case "--compile":
 			OPT_COMPILE_STDIN = true;
