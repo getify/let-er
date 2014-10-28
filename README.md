@@ -1,4 +1,5 @@
 # let-er
+
 ES6 is bringing the `let x = "foo"` syntax to JavaScript, which basically hijacks any block and scopes your declaration to that block (instead of hoisting to the containing function as in ES5 and below).
 
 **Two problems, however:**
@@ -11,6 +12,7 @@ ES6 is bringing the `let x = "foo"` syntax to JavaScript, which basically hijack
 By default, *let-er* transpiles your `let ( .. ) { .. }` blocks into standard ES6 `{ let .. ; .. }` blocks. If you pass the [`es3` option setting](#options), you can even target ES3+ browsers, using the `try..catch` hack.
 
 ## What does it look like?
+
 Write block-scoped code like this:
 
 ```js
@@ -24,14 +26,16 @@ console.log(x); // Reference Error!
 **NOTE:** *let-er* does **not** touch `let ..;` declaration syntax (similar to `var ..;`), only the (more preferable and more readable) `let ( .. ) { .. }` statement syntax. If you use `let ..;` declarations, *let-er* will simply skip over them.
 
 ## Why block-scoping anyway?
+
 You may be wondering what's the big deal with block-scoping? What difference does it make?
 
-Let's actually break the question down into two parts:
+In my ["For and against `let`"](http://davidwalsh.name/for-and-against-let) blog post, I lay out the case in detail. But let's briefly break the question down into two parts:
 
 1. How does block-scoping affect my [coding style/maintainability/behavior](#coding-stylemaintainabilitybehavior)?
 2. How does block-scoping affect my [code performance](#code-performance) (memory, GC, etc)?
 
 ### Coding Style/Maintainability/Behavior
+
 There's a concept in computer science called the "Principle of Least Exposure", which is broadly applicable in a lot of areas, but in particular here, we are using that to mean: "expose a variable and its value for only as long as it's needed, no more, no less."
 
 Take this code snippet:
@@ -109,6 +113,7 @@ function foo() {
 Now, the behavior of `i` will be to be block-scoped to that part of the code, and it will be clear not only stylistically but also functionally that `i` doesn't exist anywhere but in that block. You'll get helpful "ReferenceError" errors if you try to reference `i` elsewhere. Yay.
 
 ### Code Performance
+
 Now, let's examine how `let` ***may*** affect your code's performance. I say "may" for a couple of reasons. First, the number of engine implementations of `let` is pretty limited, so we can't *really* test in the real world just how much it will or won't affect performance. We can make intelligent guesses about the possibilities.
 
 Secondly, what the engine can do in theory and what it *will* do in the real-world are often very different. These are implementation details and we should be careful not to get too much "into the weeds" here. Only those who actually make the engines are qualified to *really* obsess too much here.
@@ -168,7 +173,8 @@ Simple change, but *potentially* a big performance difference. Now, it's clear t
 Will the engines do this? I dunno. You dunno, probably. But they *can*. And they *might*. And they *might* be able to more efficiently than if you hadn't used block-scoping.
 
 ## How does *let-er* work?
-*let-er* will, by default, transform your `let ( .. ) { .. }` style blocks into this standard ES6-compatible code.
+
+*let-er* will, by default, transform your `let ( .. ) { .. }` style blocks into standard ES6-compatible code.
 
 This:
 ```js
@@ -216,6 +222,7 @@ console.log(x); // Reference Error!
 ```
 
 ### Multiple `let`-declarations
+
 Multiple `let`-declarations are supported:
 
 ```js
@@ -260,27 +267,29 @@ console.log(x, y); // Reference Error!
 ```
 
 ## Performance
+
 Of course, the ES6 transpilation has zero performance difference to regular ES6.
 
-But, you may be wondering if there's some crazy performance hit to the ES3 `try / catch` hack. So, here's several thoughts to address that concern:
+But, you may be wondering if there's some crazy performance hit to the ES3 `try..catch` hack. So, here's several thoughts to address that concern:
 
 1. Comparing block-scoped code to non-block-scoped code performance-wise wouldn't really tell you what you might expect. You might intuitively be wondering if the performance hit is small enough (or zero!) so that you can use block-scoping "for free". It **certainly is not**.
 
    Either you need/want block-scoping, or you don't. But asking if using block-scoping is poorer performance than not using block-scoping is not a terribly useful question. The merits of the block-scoping functionality are the important question.
 
-2. A fairer comparison, though still skewed, is comparing different approaches for getting "block scoping". The main alternative to the `try / catch` hack which *let-er* uses is the IIFE (creating an inline, auto-executing function to get an extra function scope block where you want block-scoping). So, you *can* examine [how `try / catch` compares to IIFE](http://jsperf.com/block-scope-iife-vs-catch).
+2. A fairer comparison, though still skewed, is comparing different approaches for getting "block scoping". The main alternative to the `try..catch` hack which *let-er* uses is the IIFE (creating an inline, auto-executing function to get an extra function scope block where you want block-scoping). So, you *can* examine [how `try..catch` compares to IIFE](http://jsperf.com/block-scope-iife-vs-catch).
 
-   As you'll see there, `try / catch` is about 10-20% slower on average than an IIFE. This may seem like the nail in the coffin for this approach. However, there's ***a major caveat to using an IIFE***. It has some significant side-effects.
+   As you'll see there, `try..catch` is about 10-20% slower on average than an IIFE. This may seem like the nail in the coffin for this approach. However, there's ***a major caveat to using an IIFE***. It has some significant side-effects.
 
    Namely, the value of `this`, the meaning of `return` `break` `continue`, and other such things, are very different inside an IIFE, whereas these things are not affected by wrapping a `catch(..) { .. }` block around any arbitrary code.
 
-   So, even the IIFE vs. `try / catch` isn't a totally fair comparison, but it's close enough to be relevant. It does show that the `try / catch` hack isn't orders of magnitude worse or anything crazy like that. It's a bit worse than an IIFE, but in exchange you get truer block-scoping that is less intrusive/destructive to the code.
+   So, even the IIFE vs. `try..catch` isn't a totally fair comparison, but it's close enough to be relevant. It does show that the `try..catch` hack isn't orders of magnitude worse or anything crazy like that. It's a bit worse than an IIFE, but in exchange you get truer block-scoping that is less intrusive/destructive to the code.
 
-3. This transpiling to ES3 via `try / catch` is an admitted polyfill. Polyfills almost always have worse performance than their newer native counterparts. ES6 is giving us the `let` keyword for real block-scoping, and it certainly will be faster than the polyfill hack.
+3. This transpiling to ES3 via `try..catch` is an admitted polyfill. Polyfills almost always have worse performance than their newer native counterparts. ES6 is giving us the `let` keyword for real block-scoping, and it certainly will be faster than the polyfill hack.
 
    Fortunately, *let-er* defaults to ES6 code if you happen to only care about ES6 environments (node.js for instance). As you can see above, the ES6-only targeting transpiles to usage of the native `let ..;` declaration syntax, which should have all the best native performance you can get.
 
 ## API
+
 The `compile(..)` API method takes code and detects if there are any matching `let ( .. ) { .. }` style blocks that it needs to transpile. You get a single code string back, ready to go.
 
 ```js
@@ -288,6 +297,7 @@ letEr.compile('let(x="foo"){console.log(x);}');
 ```
 
 ### Additional API methods
+
 The API also includes `lex(..)`, `parse(..)`, and `generate(..)`:
 
 * `lex(..)` takes code and returns an array of tokens from the lexing of the code.
@@ -303,6 +313,7 @@ For example, `letEr.TOKEN.LET_HEADER` is the value that identifies the token lis
 Most people will not need to use these additional *let-er* API methods, but if you do need to perform extra analysis or transforms, the API provides you that flexibility. **NOTE:** Be careful to not modify/invalidate the format of these element structures, or *let-er* will likely not be able to consume them again for the next step.
 
 ## CLI
+
 *let-er* comes with a node.js tool called `leter` (note the lack of `-`), in the "bin/" directory, which is a CLI tool for compiling your let-block JS code.
 
 Here are the options for the CLI tool:
@@ -331,6 +342,7 @@ echo ".. some code .." | bin/let --compile --compile=some/file3.js
 ```
 
 ## Options
+
 There are two options you can set that control the type of code produced by *let-er* (aka, the `generate(..)` step).
 
 * `letEr.opts.es3` (boolean; default: `false`) - If set to `true`, will target ES3+ environments with the `try{throw "foo"}catch(x){ .. }` hack syntax.
@@ -340,9 +352,11 @@ There are two options you can set that control the type of code produced by *let
    **NOTE:** This option only matters if the `es3` option is set, and will have no effect otherwise.
 
 ## Warnings
+
 If there are any warnings/notices produced as part of the lexing or `let` processing, they will be populated in the `letEr.warnings` array. You can call `letEr.reset()` to clear out the warnings list in between separate compilations.
 
 ## License
+
 The code and all the documentation are released under the MIT license.
 
 http://getify.mit-license.org/
